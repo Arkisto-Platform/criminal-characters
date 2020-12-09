@@ -171,8 +171,17 @@ TODO -
 
 
 
-## Extract GEO-JSON from the data
+## EXTRA:  Extract GEO-JSON from the TEST data
 
+In addition to creating an RO-Crate and a discovery portal, it is possible to convert the contents of the crate into a new crate which contains just the GeoJSON feature data used to drive the maps used above in the HTML web preview for the RO-Crate, in case you want to do further analysis.
+
+-  To generate a new crate with geo information in it, type:
+
+    ```
+    npm run geojson
+    ```
+
+    This script uses the SAME configuration to create a new crate: `small_crate_geo/`
 
 
 
