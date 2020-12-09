@@ -6,7 +6,8 @@
   "scripts": {
     "rocstatic": "node ./node_modules/ro-crate-html-js/roc-static-html.js",
     "test": "mocha",
-    "small": "node index.js -a additional-context.json  -p CourtsCoordinates.xlsx  -d SampleData/ -s SampleData/SampleDataPrisonRecords.xlsx small-crate && node  ./node_modules/ro-crate-html-js/roc-static-html.js -c config/convictions.config.json small-crate/"
+    "geojson": "node ./node_modules/ro-crate-to-geojson/roc2geo.js small-crate/ -c config/convictions.config.json",
+    "small": "node index.js -a additional-context.json  -p CourtsCoordinates.xlsx  -d SampleData/ -s SampleData/SampleDataPrisonRecords.xlsx small-crate && node  ./node_modules/ro-crate-html-js/roc-static-html.js -c config/convictions.config.json small-crate/ && node ./node_modules/ro-crate-html-js/roc-schema.js --html small-crate/ > vocab.html"
   },
   "repository": {
     "type": "git",
@@ -21,8 +22,9 @@
     "ocfl": "^1.0.9",
     "pairtree": "0.0.1",
     "rimraf": "^3.0.2",
-    "ro-crate": "^1.3.0",
-    "ro-crate-html-js": "^1.4.0",
+    "ro-crate": "^1.6.3",
+    "ro-crate-html-js": "^1.4.1",
+    "ro-crate-to-geojson": "^1.0.1",
     "utf8": "^3.0.0",
     "xlsx": "^0.15.4"
   }

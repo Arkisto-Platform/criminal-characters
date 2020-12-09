@@ -14,7 +14,7 @@ This is a nodejs project for managing the criminal characters data as an [Arkist
 
 ## Installation
 
-The following installation instructions have been tested on Macos and assume you are installing in the `~/working` directory, adapt paths give below as necessary if not.
+The following installation instructions have been tested on Macos and assume you are installing in the `~/working` directory, adapt paths given below as necessary if not.
 
 ## Get the code
 
@@ -25,13 +25,6 @@ git clone git@github.com:Arkisto-Platform/criminal-characters.git ~/working
 cd ~/working/criminal-characters
 ```
 
-
-### Dependencies 
-If you don't have it already, install the ro-crate-html tool repository.
-
-npm install -g ro-crate-html
-
-TODO: Can this be imported automatically when installing _this_ repo? Would that give us access to rocrate-static?
 
 ### Install this library
 
@@ -46,7 +39,7 @@ TODO: more details here about the digitization process and the crowd-sourced tra
 
 To get the data type:
 
-TODO: Simon Kruik will create an npm script to fetch the data so one can type `npm fetch sample` (and `eventually npm fetch all`).
+TODO: Simon Kruik will create an npm script to fetch the data so one can type `npm fetch sample` (and eventually, when the full dataset is avaiable `npm fetch all`).
 
 This command will fetch a directory containing a number of PDF files and a spreadsheet that describes them.
 
@@ -81,9 +74,9 @@ This project uses Schema.org as the base vocabulary with a few additions where c
 See instructions below for how to generate an HTML fragment to host on https://criminalcharacters.com/vocab (via Alana Piper).
 
 
-## Make an RO-Crate and HTML website from the data
+## How to work with the test data
 
-The script [index.js] converts the spreadsheet format used by Alana Piper into an RO-Cratenode
+The script [index.js] converts the spreadsheet format used by Alana Piper into an RO-Crate.
 
 For usage type:
 ```
@@ -105,7 +98,7 @@ node index.js --help
     -h, --help                          output usage information
 
 ```
-### Test data
+### Create an RO-Crate and HTML
 
 - Type:
     ```
@@ -134,27 +127,52 @@ This command will:
     -  How to build navigation via collections attached to the root dataset:
 
        ``` "collectionTypes": ["Organization", "Offence", "Person"]```
+   
+    - Which types for which to build separate HTML pages - in this case the same set, specified via the key `types` in the configuration file. Each item with that `@type` gets a page.
 
+    - How to 'prune' the large RO-Crate down to just items directly related to each of the items that gets its own page in the website.
+
+    For example for a `Person` page this:
+    ```
+    "resolveAll": [
+                [{"property": "about", "@reverse": true}, {"property": "holdingArchive"}],
+                [{"property": "birthPlace"}],
+                [{"property": "conviction"}, {"property": "offence"}],
+                [{"property": "conviction"}, {"property": "location"}, {"property": "location"}]
+            ]},
+
+    ```
+
+   To explain the first of these statements:
+   1. Find all items that that refer back to this `Person` item using the `about` property (which finds the `ArchivalRecord` for this person, and from there, follow the `holdingArchive` )
+
+   2. Follow the birthPlace property (which links to a Place)
+
+   3. Follow the `conviction` property (to get `Sentence`s) and from each Sentence follow the `offence` property to get an `Offence`.
+
+   4. Follow the `conviction` property (to get `Sentence`s) and from each Sentence follow the `location` property to an `Organization` (a court) and then to the court's geo location via the`location` property. 
+
+   - Extract GeoJSON for each `@type` of interest, via scripts referenced in the config file via the `findPlaces` key. These have comments. Each returns GeoJSON. See [the geo script for Person](config/person-geo.js) 
+
+- Generate a schema file in HTML format; for a member of the research team to post at https://criminalcharacters.com/vocab 
+    ```
+    node ./node_modules/ro-crate-html-js/roc-schema.js --html small-crate/ > vocab.html
+    ```
+   Creates `vocab.html` from the small crate.
 
 
 
 
 ## Set up an Oni portal
 
+TODO - 
 
 ### Make an OCFL repository
+
 
 
 ## Extract GEO-JSON from the data
 
 
-## Configuration
 
-There are a number of configurable parts of this project:
-
-1.  [How to provide browse access](./config/convictions.config.json) to the data in the crate via a series of collections (initially `Person`, `Offence` and `Organization` (Court)). 
-
-2.  How to extract the place data relevant to [`Person`s]() `Organization`s and `Offence`s using a series of Javascript functions which return GeoJSON feature collections which are fed to a Leaflet map.
-
-3. 
 
