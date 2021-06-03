@@ -1,0 +1,57 @@
+[
+    {
+        "@id": "https://criminalcharacters.com/vocab#sentence",
+        "@type": "rdf:Property",
+        "rdfs:label": "sentence",
+        "rdf:comment": "Property linking to a Sentence for a prisoner",
+        "domainIncludes": {
+            "@id": "Person"
+          },
+          "rangeIncludes": 
+            {
+              "@id": "Sentence"
+            } 
+      },
+      {
+        "@id": "https://criminalcharacters.com/vocab#Sentence",
+        "@type": "rdfs:Class",
+        "rdfs:label": "Sentence",
+        "rdf:comment": "Penalty imposed by court for criminal conviction. As the data is drawn from prison records, this will usually consist of a specified term of imprisonment and the type of imprisonment conditions, e.g. 6 months hard labour. However, during this historical period it was common for persons convicted of a minor offence to be sentenced to a fine 'with the option' of a prison sentence if they were unable to pay it. After the introduction in Victoria of the Indeterminate Sentences Act in 1907, prisoners who had been declared 'habitual criminals' could also receive an indefinite sentence that meant they were imprisoned until the government authorities determined that they had sufficiently reformed. Some prisoners also faced additional penalties in addition to their prison sentence, such as periods of solitary confinement, in irons or whippings.",
+        "rdfs:subClassOf": {
+            "@id": "Action"
+          }
+    },
+      {
+        "@id": "https://criminalcharacters.com/vocab#offence",
+        "@type": "rdf:Property",
+        "rdfs:label": "offence",
+        "rdf:comment": "Crime for which prisoner convicted, linking to an Offence item."
+      },
+      {
+        "@id": "https://criminalcharacters.com/vocab#Offence",
+        "@type": "rdfs:CLass",
+        "rdfs:label": "Offence",
+        "rdf:comment": "A Crime. There are sometimes slight discrepancies between the court and prison records on the exact offence that made up a conviction, e.g. a court record specifying burglary but the prison record stating larceny. In some cases this will be because the jury found the prisoner guilty of a lesser version of the original charge.",
+        "rdfs:subClassOf": {
+            "@id": "Intangible"
+          }
+    },
+      {
+        "@id": "https://criminalcharacters.com/vocab#religion",
+        "@type": "rdf:Property",
+        "rdfs:label": "religion",
+        "rdf:comment": "Religious or church affiliation of prisoner. Some prisoners would change these over the course of a lifetime or even the course of a single prison stay.",
+        "domainIncludes": {
+            "@id": "Person"
+          }
+      },
+      {
+        "@id": "https://criminalcharacters.com/vocab#education",
+        "@type": "rdf:Property",
+        "rdfs:label": "education",
+        "rdf:comment": "Literacy of prisoner. Prison authorities would record the prisoner's statement as to whether they could read and write, do neither, do one but not the other, or were only able to read and write a little. As this was likely based on self-reporting, it must be treated with a certain level of scepticism.",
+        "domainIncludes": {
+            "@id": "Person"
+          }
+      }
+]

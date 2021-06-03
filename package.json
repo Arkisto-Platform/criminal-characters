@@ -7,7 +7,7 @@
     "rocstatic": "node ./node_modules/ro-crate-html-js/roc-static-html.js",
     "test": "mocha",
     "geojson": "node ./node_modules/ro-crate-to-geojson/roc2geo.js small-crate/ -c config/convictions.config.json",
-    "small": "node index.js -a additional-context.json  -p CourtsCoordinates.xlsx  -d SampleData/ -s SampleData/SampleDataPrisonRecords.xlsx small-crate && node  ./node_modules/ro-crate-html-js/roc-static-html.js -c config/convictions.config.json small-crate/ && node ./node_modules/ro-crate-html-js/roc-schema.js --html small-crate/ > vocab.html"
+    "small": "node index.js -a config/additional-context.json  -p CourtsCoordinates.xlsx  -d SampleData/ -s SampleData/SampleDataPrisonRecords.xlsx small-crate && node  ./node_modules/ro-crate-html-js/roc-static-html.js -c config/convictions.config.json small-crate/ && node ./node_modules/ro-crate-html-js/roc-schema.js --html small-crate/ > vocab.html"
   },
   "repository": {
     "type": "git",
