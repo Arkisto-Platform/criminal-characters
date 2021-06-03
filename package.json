@@ -7,7 +7,8 @@
     "rocstatic": "node ./node_modules/ro-crate-html-js/roc-static-html.js",
     "test": "mocha",
     "geojson": "node ./node_modules/ro-crate-to-geojson/roc2geo.js small-crate/ -c config/convictions.config.json",
-    "small": "node index.js -a config/additional-context.json  -p CourtsCoordinates.xlsx  -d SampleData/ -s SampleData/SampleDataPrisonRecords.xlsx small-crate && node  ./node_modules/ro-crate-html-js/roc-static-html.js -c config/convictions.config.json small-crate/ && node ./node_modules/ro-crate-html-js/roc-schema.js --html small-crate/ > vocab.html"
+    "small": "node index.js -a config/additional-context.json  -p CourtsCoordinates.xlsx  -d SampleData/ -s SampleData/SampleDataPrisonRecords.xlsx small-crate && node  ./node_modules/ro-crate-html-js/roc-static-html.js -c config/convictions.config.json small-crate/ && node ./node_modules/ro-crate-html-js/roc-schema.js --html small-crate/ > vocab.html",
+    "fetch:sample": "node ./node_modules/github-files-fetcher/index.js --url=https://github.com/Arkisto-Platform/criminal-characters/tree/main/SampleData --out=."
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
     "axios": "^0.19.2",
     "cheerio": "^1.0.0-rc.3",
     "geojson": "^0.5.0",
+    "github-files-fetcher": "^1.6.0",
     "ocfl": "^1.0.9",
     "pairtree": "0.0.1",
     "rimraf": "^3.0.2",
