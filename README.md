@@ -38,8 +38,12 @@ The data for this project have been collected by Alana Piper - there are circa 5
 TODO: more details here about the digitization process and the crowd-sourced transcription.
 
 To get the data type:
+```
+npm run fetch:sample
+```
+and the latest copy of the sample data will be downloaded to the "SampleData" directory.
 
-TODO: Simon Kruik will create an npm script to fetch the data so one can type `npm fetch sample` (and eventually, when the full dataset is avaiable `npm fetch all`).
+TODO: Simon Kruik will create an npm script, (when the full dataset is available) to fetch from UTS repo: `npm fetch all`.
 
 This command will fetch a directory containing a number of PDF files and a spreadsheet that describes them.
 
